@@ -1,0 +1,1978 @@
+{
+	"info": {
+		"_postman_id": "1b26dc04-43da-4293-b18e-82f3e2bf372f",
+		"name": "API-Playground",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"item": [
+						{
+							"name": "Product with valid data ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "093f0b1c-2bc5-473d-ad69-164f158ed7c0",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Correct name and model\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.name).to.eql(\"JBL In-Ear Headphones, Black - T110\");\r",
+											"    pm.expect(jsonData.model).to.eql(\"NP12345\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"JBL In-Ear Headphones, Black - T110\",\r\n\t\"type\": \"Headphones\",\r\n\t\"upc\": \"12345676\",\r\n\t\"price\": 1000,\r\n\t\"description\": \"Make the JBL in ear headphones your everyday companion. Compact and sturdy\",\r\n\t\"model\": \"NP12345\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product with invalid attributes max lenght",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25ba77c3-51bb-486f-9d74-edff52040176",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Check error messages\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.errors[0]).to.eql(\"'name' should NOT be longer than 100 characters\");\r",
+											"    pm.expect(jsonData.errors[1]).to.eql(\"'type' should NOT be longer than 30 characters\");\r",
+											"    pm.expect(jsonData.errors[2]).to.eql(\"'upc' should NOT be longer than 15 characters\");\r",
+											"    pm.expect(jsonData.errors[3]).to.eql(\"'description' should NOT be longer than 100 characters\");\r",
+											"    pm.expect(jsonData.errors[4]).to.eql(\"'manufacturer' should NOT be longer than 50 characters\");\r",
+											"    pm.expect(jsonData.errors[5]).to.eql(\"'model' should NOT be longer than 25 characters\");\r",
+											"    pm.expect(jsonData.errors[6]).to.eql(\"'url' should NOT be longer than 500 characters\");\r",
+											"    pm.expect(jsonData.errors[7]).to.eql(\"'image' should NOT be longer than 500 characters\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Speakers JBL in ear headphones your everyday companion. Compact and sturdy, these JBL headphones stay tangle free even when folded\",\r\n\t\"type\": \"feueruer ertetewtreowre uewtrouetroue \",\r\n\t\"upc\": \"1234567634324343432\",\r\n\t\"price\": 1000,\r\n\t \"description\": \"Make the JBL in ear headphones your everyday companion. Compact and sturdy, these JBL headphones stay tangle free even when folded.JBL lets you experience the real essence of music by manufacturing products which are innovative as well as ergonomic. This pair of JBL T110 In Ear Headphones will provide you the best audio experience. When you are out for a holiday or work\",\r\n\t\"model\": \"NP123456467676657657657657657\",\r\n    \"image\":\"feueruer ertetewtreowre uewtrouetroue sadarerrewretretrt rtretreyteytyty54566 gfdgfsgsgsg yetetytyteertyuiryiutr eurewoutreotroetrewt eurtoetroewtrietwroew eyroewtroetreo        ryew8rte8wrt8ere9tr8etr8ewtr8e  er8te8rte8tr8ewtrte8r e8re8tr8erte re e9rtew8retr8et8re8r68e6r erte8rf8erf8er8e8rew8re8wr e8trewtretrqetortoqteoryo8eqrer ere8rte8rt8etreoqotrugugure tr8etr8te8re8r8etr8et8rte ergeiruteiruetrietiurteir8erq8re8qr8  r8q8er8eqtr8eq6r8e68r6er86e8r er8teq8rt8er8eqy8rter8et8rt tr8qtr8teqrt98qtrqtr\",\r\n    \"url\":\"feueruer ertetewtreowre uewtrouetroue sadarerrewretretrt rtretreyteytyty54566 gfdgfsgsgsg yetetytyteertyuiryiutr eurewoutreotroetrewt eurtoetroewtrietwroew eyroewtroetreo        ryew8rte8wrt8ere9tr8etr8ewtr8e  er8te8rte8tr8ewtrte8r e8re8tr8erte re e9rtew8retr8et8re8r68e6r erte8rf8erf8er8e8rew8re8wr e8trewtretrqetortoqteoryo8eqrer ere8rte8rt8etreoqotrugugure tr8etr8te8re8r8etr8et8rte ergeiruteiruetrietiurteir8erq8re8qr8  r8q8er8eqtr8eq6r8e68r6er86e8r er8teq8rt8er8eqy8rter8et8rt tr8qtr8teqrt98qtrqtr\",\r\n    \"manufacturer\":\"Country of Origin: China // Warranty Details: 1 Year \"\r\n   \r\n\r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product with invalid attributes min lenght",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "62bea06e-6230-464d-a6b5-8b4b68de0113",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Check error messages\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.errors[0]).to.eql(\"'name' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[1]).to.eql(\"'type' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[2]).to.eql(\"'upc' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[3]).to.eql(\"'description' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[4]).to.eql(\"'manufacturer' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[5]).to.eql(\"'model' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[6]).to.eql(\"'url' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[7]).to.eql(\"'image' should NOT be shorter than 1 characters\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"\",\r\n\t\"type\": \"\",\r\n\t\"upc\": \"\",\r\n\t\"price\": 1000,\r\n\t \"description\": \"\",\r\n\t\"model\": \"\",\r\n    \"image\":\"\",\r\n    \"url\":\"\",\r\n    \"manufacturer\":\"\"\r\n   \r\n\r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product with invalid \"shipping \" & \"Price\" (not multiple of 0.01)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "736a3de0-4483-4a97-bcbc-a8b45506d7be",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Mobile1\",\r\n\t\"type\": \"Mobiles\",\r\n\t\"upc\": \"12345676\",\r\n\t\"price\": 0.7656,\r\n    \"shipping\": 343.343,\r\n\t\"description\": \"Mobile 1 description\",\r\n\t\"model\": \"NP12345\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product with valid \"shipping \" & \"price\" multiple of 0.01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1981cad8-eefe-48aa-aa20-4b3b86e13d0d",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.price).to.eql(0.99);\r",
+											"    pm.expect(jsonData.shipping).to.eql(0.49);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Mobile3\",\r\n\t\"type\": \"Mobiles\",\r\n\t\"upc\": \"12345676\",\r\n\t\"price\": 0.99,\r\n    \"shipping\": 0.49,\r\n\t\"description\": \"Mobile 1 description\",\r\n\t\"model\": \"NP12345\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product with no price (optional) attribute",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7eb87bc3-8bef-45fa-a1ab-f6b93c1c085b",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Mobile 2\",\r\n\t\"type\": \"Mobile\",\r\n\t\"upc\": \"12345676\",\r\n\t\"description\": \"Mobile 1 description\",\r\n\t\"model\": \"NP12345\"\r\n   \r\n}"
+								},
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Retrieve Products",
+					"item": [
+						{
+							"name": "All Products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a336c2bc-8db1-44ba-83d4-4dcd2c377deb",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base}}/products",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Highest Priced Products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "46463a82-3fd6-48cb-99a9-0310803c306a",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3030/products?$sort[price]=-1",
+									"host": [
+										"localhost"
+									],
+									"port": "3030",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "$sort[price]",
+											"value": "-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TVs with free shipping and price between $500 and $800",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "877e94a4-9b65-49fd-b063-e19347a81220",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3030/products?category.name=TVs&price[$gt]=500&price[$lt]=800&shipping[$eq]=0",
+									"host": [
+										"localhost"
+									],
+									"port": "3030",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "category.name",
+											"value": "TVs"
+										},
+										{
+											"key": "price[$gt]",
+											"value": "500"
+										},
+										{
+											"key": "price[$lt]",
+											"value": "800"
+										},
+										{
+											"key": "shipping[$eq]",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product Name and Description Only",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cc147e5f-74d6-4ddb-92a5-55e904bee756",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3030/products?$select[]=name&$select[]=description",
+									"host": [
+										"localhost"
+									],
+									"port": "3030",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "$select[]",
+											"value": "name"
+										},
+										{
+											"key": "$select[]",
+											"value": "description"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products with type equals \"HardGood\"",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "982a117a-0296-46b8-a313-7bc0950750fa",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/products?type=HardGood",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "HardGood"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products by name and price only",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "74b36990-6153-4017-8a90-f461733d59c4",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/products?$select[]=name&$select[]=price",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "$select[]",
+											"value": "name"
+										},
+										{
+											"key": "$select[]",
+											"value": "price"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get specific product by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "21a04840-fdcd-4216-bcca-18e64cffb9bf",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/products/127687",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products",
+										"127687"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete Product by id",
+					"item": [
+						{
+							"name": "Delete Product ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "21957cb6-ef56-48bb-b51e-a7835a9b1145",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base}}/products/127687",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products",
+										"127687"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete non existing Product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d58791a9-6bfa-4a8b-8185-d95e43e82c11",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/products/45435454",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products",
+										"45435454"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update product by id ",
+					"item": [
+						{
+							"name": "Update Product with valid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e626053c-7427-4a73-88fe-983a58bd524c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Duracell - AA Batteries (8-Pack)\",\r\n\t\"type\": \"SoftGood\",\r\n\t\"upc\": \"1234567634234\",\r\n\t\"price\": 1000,\r\n\t\"description\": \"Mobile 1 description\",\r\n\t\"model\": \"NP12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/products/150115",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products",
+										"150115"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product with invalid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d1cff6ab-cb4a-4be0-a1e0-819d9989c8d8",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Duracell - AA Batteries (8-Pack) \",\r\n\t\"type\": \"SoftGood\",\r\n\t\"upc\": \"1234567634234\",\r\n\t\"price\": 1000,\r\n\t\"description\": \"Duracell is the world's leading manufacturer of high performance alkaline batteries, specialty cells and rechargeables. Since its foundation in the early 1940s, the company has become an iconic personal power brand, trusted for compact and longer-lasting batteries.Our alkaline batteries are composed of primarily common materials—steel, zinc, and manganese—and do not pose a health or environmental risk in normal use or disposal.\",\r\n\t\"model\": \"NP12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/products/185230",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"products",
+										"185230"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Create Store",
+					"item": [
+						{
+							"name": "Stores with valid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "402d1603-8016-4cd7-b560-342359b39a9e",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Correct name and model\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.type).to.eql(\"BigBox\");\r",
+											"    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"New Store\",\r\n      \"type\": \"BigBox\",\r\n      \"address\": \"123 Fake St\",\r\n      \"address2\": \"\",\r\n      \"city\": \"Springfield\",\r\n      \"state\": \"MN\",\r\n      \"zip\": \"55123\",\r\n      \"lat\": 44.969658,\r\n      \"lng\": -93.449539,\r\n      \"hours\": \"Mon: 10-9; Tue: 10-9; Wed: 10-9; Thurs: 10-9; Fri: 10-9; Sat: 10-9; Sun: 10-8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/stores",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Stores with invalid attributes max lenght",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d3c7a38e-50a9-43c5-a65e-47b03a57fb20",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Check error messages\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.errors[0]).to.eql(\"'name' should NOT be longer than 100 characters\");\r",
+											"    pm.expect(jsonData.errors[1]).to.eql(\"'type' should NOT be longer than 30 characters\");\r",
+											"    pm.expect(jsonData.errors[2]).to.eql(\"'address' should NOT be longer than 50 characters\");\r",
+											"    pm.expect(jsonData.errors[3]).to.eql(\"'address2' should NOT be longer than 30 characters\");\r",
+											"    pm.expect(jsonData.errors[4]).to.eql(\"'city' should NOT be longer than 50 characters\");\r",
+											"    pm.expect(jsonData.errors[5]).to.eql(\"'state' should NOT be longer than 30 characters\");\r",
+											"    pm.expect(jsonData.errors[6]).to.eql(\"'zip' should NOT be longer than 30 characters\");\r",
+											"    pm.expect(jsonData.errors[7]).to.eql(\"'hours' should NOT be longer than 100 characters\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"Dollar Savings Made with Love Handmade & Precious Sweet Spot One of a Kind Studio  store 132324343545\",\r\n      \"type\": \"feueruer ertetewtreowre uewtrouetroue \",\r\n      \"address\": \"123 Fake St esafesr gretrtrg retretretretretretrertrt\",\r\n      \"address2\": \"123 Fake St esafesr gretrtrg retretretretretretrertrt\",\r\n      \"city\": \"123 Fake St esafesr gretrtrg retretretretretretrertrt\",\r\n      \"state\": \"feueruer ertetewtreowre uewtrouetroue\",\r\n      \"zip\": \"551233475327843245374573247323243432432234234234324\",\r\n      \"lat\": 44.969658,\r\n      \"lng\": -93.449539,\r\n      \"hours\": \"Mon: 10-9; Tue: 10-9; Wed: 10-9; Thurs: 10-9; Fri: 10-9; Sat: 10-9; Sun: 10-8 Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9; Mon: 10-9;\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/stores",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Stores with invalid attributes min lenght",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "831024ae-8953-4dbf-80d8-f6c80de12b7e",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Check error messages\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.errors[0]).to.eql(\"'name' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[1]).to.eql(\"'type' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[2]).to.eql(\"'address' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[3]).to.eql(\"'city' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[4]).to.eql(\"'state' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[5]).to.eql(\"'zip' should NOT be shorter than 1 characters\");\r",
+											"    pm.expect(jsonData.errors[6]).to.eql(\"'hours' should NOT be shorter than 1 characters\");\r",
+											"    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"\",\r\n      \"type\": \"\",\r\n      \"address\": \"\",\r\n      \"address2\": \"\",\r\n      \"city\": \"\",\r\n      \"state\": \"\",\r\n      \"zip\": \"\",\r\n      \"lat\": 44.969658,\r\n      \"lng\": -93.449539,\r\n      \"hours\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/stores",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Retrieve Stores",
+					"item": [
+						{
+							"name": "All Stores",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "51021cb8-1383-465a-a748-e7a02f6f743e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find Stores Within 10 Miles of Beverly Hills",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7553f0a1-e331-4cab-9dcf-466d2c7c655c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores?near=90210&service.name=Windows%20Store",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									],
+									"query": [
+										{
+											"key": "near",
+											"value": "90210"
+										},
+										{
+											"key": "service.name",
+											"value": "Windows%20Store"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find stores in Minnesota",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0f3dbb67-3254-41f0-b49c-5900eaf257d9",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "04a50998-5c2a-4dec-b26b-bc3ddd9e78ee",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores?state=MN",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									],
+									"query": [
+										{
+											"key": "state",
+											"value": "MN"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find stores that sell Apple products",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "2bd63c69-b45b-49fd-9b05-b5bbed3bda80",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c4fbfa6-39e2-4161-9c75-52a3677053b1",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores?service.name=Apple Shop",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									],
+									"query": [
+										{
+											"key": "service.name",
+											"value": "Apple Shop"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Stores with type equals \"BigBox\"",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "61fc2244-9687-40da-bab2-376e1ad33c01",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ddf62ca8-4ce6-4410-a38f-8fb5fe3b66b8",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores?type=BigBox",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "BigBox"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get specific store by id ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef9487cd-b174-4ecb-9cfe-298f6933bef3",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores/7",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete Store by id ",
+					"item": [
+						{
+							"name": "Delete Store ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "182a924d-5ed0-4485-b13a-4cdf93701e22",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores/6",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete non existing Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4d75a27f-48b5-4a42-a297-7c7eb92a1ebe",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/stores/4",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update Store by id ",
+					"item": [
+						{
+							"name": "Update store by id ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7798b593-070c-4ba7-a891-d1c8ec7fd90d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"New Store\",\r\n      \"type\": \"BigBox\",\r\n      \"address\": \"4535 fdgfg\",\r\n      \"address2\": \"\",\r\n      \"city\": \"Springfield\",\r\n      \"state\": \"MN\",\r\n      \"zip\": \"55123\",\r\n      \"lat\": 44.969658,\r\n      \"lng\": -93.449539,\r\n      \"hours\": \"Mon: 10-9; Tue: 10-9; Wed: 10-9; Thurs: 10-9; Fri: 10-9; Sat: 10-9; Sun: 10-8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/stores/7",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"stores",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Services ",
+			"item": [
+				{
+					"name": "Create Service",
+					"item": [
+						{
+							"name": "Service with valid name ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "217a935e-2de1-4217-854e-def0e0d316d1",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"New Service\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/services",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Service with name lenght greater than max",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "49e324d1-0432-45e3-be63-21a2abda4f78",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"feueruer ertetewtreowre uewtrouetroue sadarerrewretretrt rtretreyteytyty54566 gfdgfsgsgsg yetetytyteertyuiryiutr \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/services",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Service with name lenght less than min",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "922b7769-43f4-496c-9296-6d92514f14e2",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/services",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Retrieve Services",
+					"item": [
+						{
+							"name": "All Services ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "384b53f4-cb8f-4f05-b690-1c4948fb183d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/services",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Specific Services by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a201a5a0-d633-46db-b451-61fbb12dbd63",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/services/6",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete Service by id ",
+					"item": [
+						{
+							"name": "Delete service by id ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "60514cdc-cf29-4121-9ff8-7db89b61ec62",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/services/7",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete non existing service",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9340a16c-b411-4212-ae72-13c7360ee244",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/services/3554",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services",
+										"3554"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update Services by id ",
+					"item": [
+						{
+							"name": "Update service by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ec16cee8-eeb6-4965-9431-57593026366c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t  \"name\": \"Camera 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/services/6",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"item": [
+						{
+							"name": "Category with valid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5e1fc989-088d-4065-af93-3738574bb82b",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t\"id\": \"123458\",\r\n\t\"name\": \"New Category\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/categories",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category with attributes lenght greater than max",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d3b24f4-568a-472f-84db-cc4125ed45b3",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t\"id\": \"123454834387432874523743294328432594853249325489325498325485324953248532453295757857558575858575875585757558575587578\",\r\n\t\"name\": \"New Category 734532743479348159431845831453145931840314531048314531045343043184314583453154083198689689686868968669668969686\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/categories",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category with attributes lenght less than min",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0b706cf8-9ba5-40bc-9164-3356f4021b28",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t\"id\": \"\",\r\n\t\"name\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/categories",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Retrieve Category",
+					"item": [
+						{
+							"name": "All Categories",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "77ae495d-9f2e-444d-82b6-e81860131afe",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/categories",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories with TV in the name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "36639ed5-5fed-4fd7-b2c5-63b731c44472",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/categories?name[$like]=*TV*",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories"
+									],
+									"query": [
+										{
+											"key": "name[$like]",
+											"value": "*TV*"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Specific Category by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d8df63dd-372c-4c1d-89d6-34cc3e84beb7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/categories/abcat0020004",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories",
+										"abcat0020004"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete Category by id",
+					"item": [
+						{
+							"name": "Delete Category by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d7c63d7-b9b3-462d-8a78-a6c6e17c7073",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/categories/abcat0050000",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories",
+										"abcat0050000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete non existing Category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98f988aa-6cdc-4b0e-ba31-c5d1954bb5b8",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Base}}/services/3554",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"services",
+										"3554"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update Categories by id",
+					"item": [
+						{
+							"name": "Update Category by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "323a2192-6e30-4147-b7ff-18c6628bd50b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{      \r\n\t\"id\": \"abcat0020001\",\r\n\t\"name\": \"Learning Toy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base}}/categories/abcat0020001",
+									"host": [
+										"{{Base}}"
+									],
+									"path": [
+										"categories",
+										"abcat0020001"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

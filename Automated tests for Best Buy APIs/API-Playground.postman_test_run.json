@@ -1,0 +1,1486 @@
+{
+	"id": "7b3ee396-c25e-47e0-865e-1f18c9a80791",
+	"name": "API-Playground",
+	"timestamp": "2021-04-22T20:36:07.962Z",
+	"collection_id": "1b26dc04-43da-4293-b18e-82f3e2bf372f",
+	"folder_id": 0,
+	"environment_id": "4ad9b393-171e-4fdf-bd3a-e7726a9ee4b2",
+	"totalPass": 47,
+	"totalFail": 6,
+	"results": [
+		{
+			"id": "fe450a0c-489a-4a2e-a632-797b2d53e6b7",
+			"name": "Product with valid data ",
+			"url": "http://localhost:3030/products",
+			"time": 95,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Correct name and model": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct name and model": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				95
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Correct name and model": true
+				}
+			]
+		},
+		{
+			"id": "6eceac39-5aa1-46ff-b408-bffc31c48097",
+			"name": "Product with invalid attributes max lenght",
+			"url": "http://localhost:3030/products",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check error messages": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check error messages": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check error messages": true
+				}
+			]
+		},
+		{
+			"id": "15316b6f-d131-420c-b77e-c456855c9adb",
+			"name": "Product with invalid attributes min lenght",
+			"url": "http://localhost:3030/products",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check error messages": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check error messages": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check error messages": true
+				}
+			]
+		},
+		{
+			"id": "5bd6a867-d6f2-4086-8224-227ed262d096",
+			"name": "Product with invalid \"shipping \" & \"Price\" (not multiple of 0.01)",
+			"url": "http://localhost:3030/products",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "c308e8c9-b7ac-4185-ba1e-495bca7cd3b0",
+			"name": "Product with valid \"shipping \" & \"price\" multiple of 0.01",
+			"url": "http://localhost:3030/products",
+			"time": 27,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Your test name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Your test name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Your test name": true
+				}
+			]
+		},
+		{
+			"id": "ab29caf2-3369-42b7-be2c-771624c5038a",
+			"name": "Product with no price (optional) attribute",
+			"url": "http://localhost:3030/products",
+			"time": 26,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "d483e37e-411b-47a2-a9ca-420c02ab6ad5",
+			"name": "All Products",
+			"url": "http://localhost:3030/products",
+			"time": 386,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				386
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2d496cc0-41c5-48d0-9134-511c98ec82ff",
+			"name": "Highest Priced Products",
+			"url": "http://localhost:3030/products?$sort[price]=-1",
+			"time": 503,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				503
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "0031a6ed-2ddd-49c3-ad8d-1ec822ab049f",
+			"name": "TVs with free shipping and price between $500 and $800",
+			"url": "http://localhost:3030/products?category.name=TVs&price[$gt]=500&price[$lt]=800&shipping[$eq]=0",
+			"time": 628,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				628
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a780a72f-9315-428c-b35e-4fc63dbd87bf",
+			"name": "Product Name and Description Only",
+			"url": "http://localhost:3030/products?$select[]=name&$select[]=description",
+			"time": 67,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				67
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7e235979-b111-4f7a-98f1-35270a0281f0",
+			"name": "Products with type equals \"HardGood\"",
+			"url": "http://localhost:3030/products?type=HardGood",
+			"time": 386,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				386
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ee62443d-e076-43fc-a552-5f18e1271937",
+			"name": "Products by name and price only",
+			"url": "http://localhost:3030/products?$select[]=name&$select[]=price",
+			"time": 157,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				157
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a6268a1a-71ca-4b4d-980c-b459ac0cb645",
+			"name": "Get specific product by id",
+			"url": "http://localhost:3030/products/333179",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c4d277b2-5910-41c2-b5f0-be2ad157076a",
+			"name": "Delete Product ",
+			"url": "http://localhost:3030/products/150115",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "dc0d3074-6aa6-494d-9fdf-a1cfcc17120e",
+			"name": "Delete non existing Product",
+			"url": "http://localhost:3030/products/45435454",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "b7b64b5e-6969-4264-972a-8dbf92afb1d9",
+			"name": "Update Product with valid data",
+			"url": "http://localhost:3030/products/150115",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "dba2024d-ed26-4853-a637-65df9fc29a8a",
+			"name": "Update Product with invalid data",
+			"url": "http://localhost:3030/products/185230",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "d864fe5c-aad9-49bd-8a12-840749f0f0fb",
+			"name": "Stores with valid data",
+			"url": "http://localhost:3030/stores",
+			"time": 31,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Correct name and model": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct name and model": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Correct name and model": true
+				}
+			]
+		},
+		{
+			"id": "b111912b-22a8-4763-b4a1-7f04c7767585",
+			"name": "Stores with invalid attributes max lenght",
+			"url": "http://localhost:3030/stores",
+			"time": 15,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check error messages": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check error messages": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check error messages": true
+				}
+			]
+		},
+		{
+			"id": "eb6eb42b-86d5-4568-a16a-f38c489bf87e",
+			"name": "Stores with invalid attributes min lenght",
+			"url": "http://localhost:3030/stores",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Check error messages": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check error messages": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Check error messages": true
+				}
+			]
+		},
+		{
+			"id": "359e0fdb-3ee3-418a-8a1c-9e79f0cd4b1b",
+			"name": "All Stores",
+			"url": "http://localhost:3030/stores",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3499f52e-138e-4b04-af2a-5257740ec475",
+			"name": "Find Stores Within 10 Miles of Beverly Hills",
+			"url": "http://localhost:3030/stores?near=90210&service.name=Windows%20Store",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b78b0b5a-2b01-450d-b868-998ee02af916",
+			"name": "Find stores in Minnesota",
+			"url": "http://localhost:3030/stores?state=MN",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3375dc2e-2d9a-4754-a2f6-68367aacf2f6",
+			"name": "Find stores that sell Apple products",
+			"url": "http://localhost:3030/stores?service.name=Apple%20Shop",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2eb3a9f8-0458-4b43-bb30-a594db46e001",
+			"name": "Stores with type equals \"BigBox\"",
+			"url": "http://localhost:3030/stores?type=BigBox",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "32c9529e-1887-4530-ad5f-3c58444a74c1",
+			"name": "Get specific store by id ",
+			"url": "http://localhost:3030/stores/7",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "799fe606-88a9-4e4d-a888-7499e1beb3d4",
+			"name": "Delete Store ",
+			"url": "http://localhost:3030/stores/7",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f888e170-cfe4-41df-8bb2-4a6050657f11",
+			"name": "Delete non existing Store",
+			"url": "http://localhost:3030/stores/4",
+			"time": 32,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "2a62d7ef-b658-4ce6-a166-74da776c75fd",
+			"name": "Update store by id ",
+			"url": "http://localhost:3030/stores/7",
+			"time": 10,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "0f3f65f0-3388-4fcd-b53f-8e0858bd098a",
+			"name": "Service with valid name ",
+			"url": "http://localhost:3030/services",
+			"time": 22,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "030c9e14-9247-4a36-b9b2-a9a4c40c6028",
+			"name": "Service with name lenght greater than max",
+			"url": "http://localhost:3030/services",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "ebec8a78-6c82-4f43-90a3-7b2c23bb15cf",
+			"name": "Service with name lenght less than min",
+			"url": "http://localhost:3030/services",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "86ba2020-13ba-4ef5-977f-9c36b53ae685",
+			"name": "All Services ",
+			"url": "http://localhost:3030/services",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "e37fb65c-03f8-4549-a615-b5d5c281cf42",
+			"name": "Specific Services by id",
+			"url": "http://localhost:3030/services/6",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d742e750-2c35-444b-9eb7-b054ccb0af14",
+			"name": "Delete service by id ",
+			"url": "http://localhost:3030/services/2",
+			"time": 366,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				366
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "76ff4087-8afa-4210-81c1-317981527e6e",
+			"name": "Delete non existing service",
+			"url": "http://localhost:3030/services/3554",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "18b683de-286b-4c7b-b286-517f6c60fad2",
+			"name": "Update service by id",
+			"url": "http://localhost:3030/services/6",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "09a2274e-3516-40b0-811b-70df52195c7c",
+			"name": "Category with valid data",
+			"url": "http://localhost:3030/categories",
+			"time": 19,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "6bf16ef3-e1ce-4a57-96a9-bffc91fe6c5c",
+			"name": "Category with attributes lenght greater than max",
+			"url": "http://localhost:3030/categories",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "9407edbf-5cd0-4fd7-a17b-ac935fd1ce1e",
+			"name": "Category with attributes lenght less than min",
+			"url": "http://localhost:3030/categories",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "41533e9e-963f-4557-8bf2-c5344cb31ceb",
+			"name": "All Categories",
+			"url": "http://localhost:3030/categories",
+			"time": 78,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				78
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9335d703-a860-4685-9edb-d9eba3c2a4ae",
+			"name": "Categories with TV in the name",
+			"url": "http://localhost:3030/categories?name[$like]=*TV*",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9e181e28-4f3b-43b5-b36e-59dd3ff18779",
+			"name": "Specific Category by id",
+			"url": "http://localhost:3030/categories/abcat0020004",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3f0fc32e-7d90-44ce-9ac3-accce0311d04",
+			"name": "Delete Category by id",
+			"url": "http://localhost:3030/categories/abcat0020002",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "e39b8b53-07ee-403d-8f2d-304ef5f0da83",
+			"name": "Delete non existing Category",
+			"url": "http://localhost:3030/services/3554",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "8c0305fb-5066-4dcc-9eac-049aed54cca5",
+			"name": "Update Category by id",
+			"url": "http://localhost:3030/categories/abcat0020001",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3310,
+	"collection": {
+		"requests": [
+			{
+				"id": "fe450a0c-489a-4a2e-a632-797b2d53e6b7",
+				"method": "POST"
+			},
+			{
+				"id": "6eceac39-5aa1-46ff-b408-bffc31c48097",
+				"method": "POST"
+			},
+			{
+				"id": "15316b6f-d131-420c-b77e-c456855c9adb",
+				"method": "POST"
+			},
+			{
+				"id": "5bd6a867-d6f2-4086-8224-227ed262d096",
+				"method": "POST"
+			},
+			{
+				"id": "c308e8c9-b7ac-4185-ba1e-495bca7cd3b0",
+				"method": "POST"
+			},
+			{
+				"id": "ab29caf2-3369-42b7-be2c-771624c5038a",
+				"method": "POST"
+			},
+			{
+				"id": "d483e37e-411b-47a2-a9ca-420c02ab6ad5",
+				"method": "GET"
+			},
+			{
+				"id": "2d496cc0-41c5-48d0-9134-511c98ec82ff",
+				"method": "GET"
+			},
+			{
+				"id": "0031a6ed-2ddd-49c3-ad8d-1ec822ab049f",
+				"method": "GET"
+			},
+			{
+				"id": "a780a72f-9315-428c-b35e-4fc63dbd87bf",
+				"method": "GET"
+			},
+			{
+				"id": "7e235979-b111-4f7a-98f1-35270a0281f0",
+				"method": "GET"
+			},
+			{
+				"id": "ee62443d-e076-43fc-a552-5f18e1271937",
+				"method": "GET"
+			},
+			{
+				"id": "a6268a1a-71ca-4b4d-980c-b459ac0cb645",
+				"method": "GET"
+			},
+			{
+				"id": "c4d277b2-5910-41c2-b5f0-be2ad157076a",
+				"method": "DELETE"
+			},
+			{
+				"id": "dc0d3074-6aa6-494d-9fdf-a1cfcc17120e",
+				"method": "DELETE"
+			},
+			{
+				"id": "b7b64b5e-6969-4264-972a-8dbf92afb1d9",
+				"method": "PATCH"
+			},
+			{
+				"id": "dba2024d-ed26-4853-a637-65df9fc29a8a",
+				"method": "PATCH"
+			},
+			{
+				"id": "d864fe5c-aad9-49bd-8a12-840749f0f0fb",
+				"method": "POST"
+			},
+			{
+				"id": "b111912b-22a8-4763-b4a1-7f04c7767585",
+				"method": "POST"
+			},
+			{
+				"id": "eb6eb42b-86d5-4568-a16a-f38c489bf87e",
+				"method": "POST"
+			},
+			{
+				"id": "359e0fdb-3ee3-418a-8a1c-9e79f0cd4b1b",
+				"method": "GET"
+			},
+			{
+				"id": "3499f52e-138e-4b04-af2a-5257740ec475",
+				"method": "GET"
+			},
+			{
+				"id": "b78b0b5a-2b01-450d-b868-998ee02af916",
+				"method": "GET"
+			},
+			{
+				"id": "3375dc2e-2d9a-4754-a2f6-68367aacf2f6",
+				"method": "GET"
+			},
+			{
+				"id": "2eb3a9f8-0458-4b43-bb30-a594db46e001",
+				"method": "GET"
+			},
+			{
+				"id": "32c9529e-1887-4530-ad5f-3c58444a74c1",
+				"method": "GET"
+			},
+			{
+				"id": "799fe606-88a9-4e4d-a888-7499e1beb3d4",
+				"method": "DELETE"
+			},
+			{
+				"id": "f888e170-cfe4-41df-8bb2-4a6050657f11",
+				"method": "DELETE"
+			},
+			{
+				"id": "2a62d7ef-b658-4ce6-a166-74da776c75fd",
+				"method": "PATCH"
+			},
+			{
+				"id": "0f3f65f0-3388-4fcd-b53f-8e0858bd098a",
+				"method": "POST"
+			},
+			{
+				"id": "030c9e14-9247-4a36-b9b2-a9a4c40c6028",
+				"method": "POST"
+			},
+			{
+				"id": "ebec8a78-6c82-4f43-90a3-7b2c23bb15cf",
+				"method": "POST"
+			},
+			{
+				"id": "86ba2020-13ba-4ef5-977f-9c36b53ae685",
+				"method": "GET"
+			},
+			{
+				"id": "e37fb65c-03f8-4549-a615-b5d5c281cf42",
+				"method": "GET"
+			},
+			{
+				"id": "d742e750-2c35-444b-9eb7-b054ccb0af14",
+				"method": "DELETE"
+			},
+			{
+				"id": "76ff4087-8afa-4210-81c1-317981527e6e",
+				"method": "DELETE"
+			},
+			{
+				"id": "18b683de-286b-4c7b-b286-517f6c60fad2",
+				"method": "PATCH"
+			},
+			{
+				"id": "09a2274e-3516-40b0-811b-70df52195c7c",
+				"method": "POST"
+			},
+			{
+				"id": "6bf16ef3-e1ce-4a57-96a9-bffc91fe6c5c",
+				"method": "POST"
+			},
+			{
+				"id": "9407edbf-5cd0-4fd7-a17b-ac935fd1ce1e",
+				"method": "POST"
+			},
+			{
+				"id": "41533e9e-963f-4557-8bf2-c5344cb31ceb",
+				"method": "GET"
+			},
+			{
+				"id": "9335d703-a860-4685-9edb-d9eba3c2a4ae",
+				"method": "GET"
+			},
+			{
+				"id": "9e181e28-4f3b-43b5-b36e-59dd3ff18779",
+				"method": "GET"
+			},
+			{
+				"id": "3f0fc32e-7d90-44ce-9ac3-accce0311d04",
+				"method": "DELETE"
+			},
+			{
+				"id": "e39b8b53-07ee-403d-8f2d-304ef5f0da83",
+				"method": "DELETE"
+			},
+			{
+				"id": "8c0305fb-5066-4dcc-9eac-049aed54cca5",
+				"method": "PATCH"
+			}
+		]
+	}
+}
